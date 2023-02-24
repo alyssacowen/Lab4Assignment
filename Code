@@ -1,0 +1,56 @@
+package com.mycompany.csclab04assignment;
+
+
+public class CSCLab04Assignment {
+
+    public static void main(String[] args) {
+    //here I am calling my recursiveHelloWorld function
+    //I want Hello World to print 7 times
+        recursiveHelloWorld(7);
+        //I am calling my n1n2sum function
+        //I want to find the sum of the numbers between 4 and 44 that are multiples of 7
+        System.out.println(n1n2sum(4,44));
+    }
+public static void recursiveHelloWorld(int nTimes){
+//here I will write the code for recursion
+if (nTimes <= 0){
+    return; //base case
+}
+else{
+    recursiveHelloWorld(nTimes - 1);//recursive call
+    System.out.println("Hello World");
+}
+}
+//Write a function that returns the sum of all numbers between n1 and n2 that are multiples of 7 using recursion
+public static int n1n2sum(int n1, int n2){
+   
+    if (n1 > n2){
+      return 0;  //base case
+    }
+    //if n1 mod 7 is equal to 0 then it is a multiple of 7
+    else if (n1 % 7 == 0){
+        return n1 + n1n2sum(n1 + 7, n2);
+}
+    //if not a multiple
+    else {
+        return n1n2sum(n1 + 1,n2);
+    }
+}
+    //Write a function that implements the binary search algorithm recursively.
+public static int recursiveBinarySearch(int[] array, int rightSide, int leftSide, int goal){
+   int middle = (rightSide + leftSide)/2;
+    if (leftSide > rightSide){
+        return -1; //base case
+    }
+    if(array[middle]==goal){
+        return middle;
+    }
+    else if(array[middle]<goal){
+        return recursiveBinarySearch(array, goal, middle+1, rightSide);//if my goal number is in the array's right half
+    }
+    else{
+        return recursiveBinarySearch(array, leftSide, middle+1, rightSide);//if my goal number is in the array's left half
+    }
+}
+}
+    
